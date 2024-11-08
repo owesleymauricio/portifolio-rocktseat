@@ -28,10 +28,12 @@
             position: relative;
             background-image: url('assets/foto-header.png');
 
-            background-size: cover; /* Ajusta a imagem para caber dentro do container sem distorcer */
+            background-size: cover;
+            /* Ajusta a imagem para caber dentro do container sem distorcer */
             background-position: center;
             overflow: hidden;
-            z-index: 1; /* Certifica-se de que o conteúdo está abaixo */
+            z-index: 1;
+            /* Certifica-se de que o conteúdo está abaixo */
         }
 
         .overlay {
@@ -90,12 +92,43 @@
         .header,
         .section,
         .footer {
-            border: 2px solid red;
+          
             padding: 20px;
         }
 
         .section {
             height: 921px;
+        }
+
+        .th2 {
+          
+            width: 1040px;
+            text-align: center;
+        }
+
+        .sgrid {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            width: 1040px;
+            
+        
+        }
+        .card-body{
+           
+            height: auto;
+        }
+        .card-title{
+            text-align: center;
+
+        }
+      
+        .card-text{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
         }
 
         .footer {
@@ -108,7 +141,7 @@
     <div class="container-xxl">
         <!-- Header -->
         <header class="container principal-content">
-            
+
             <div class="overlay"></div> <!-- Filtro opaco adicionado -->
             <div class="secundary-content">
                 <div class="container third-content">
@@ -139,14 +172,60 @@
         <!-- Fim Header -->
 
         <!-- Section -->
+        <?php
+
+        $datas = [
+            [
+                "title" => "O Senhor dos Aneis",
+                "image" => "assets/senhor.png",
+                "desc" => "uma pagina de tributos feita a epica historia de O Senhor dos Aneis ",
+                "url" => "https://lord-of-rings-sepia.vercel.app/"
+            ],
+            [
+                "title" => "Otica vida",
+                "image" => "assets/otica2.png",
+                "desc" => "Pagina ficticia de uma loja de oculos, onde site pode ser usado em uma loja verdadeira",
+                "url" => "https://otica-com-chakra.vercel.app/"
+            ],
+            [
+                "title" => "O Senhor dos Aneis",
+                "image" => "assets/senhor.png",
+                "desc" => "uma pagina de tributos feita a epica historia de O Senhor dos Aneis ",
+                "url" => "https://lord-of-rings-sepia.vercel.app/"
+            ],
+            [
+                "title" => "Otica vida",
+                "image" => "assets/otica2.png",
+                "desc" => "Pagina ficticia de uma loja de oculos, onde site pode ser usado em uma loja verdadeira",
+                "url" => "https://otica-com-chakra.vercel.app/"
+            ]
+        ]
+        ?>
         <section class="container section">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Conteúdo da coluna 1</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>Conteúdo da coluna 2</p>
-                </div>
+            <div class="container th2">
+                <h2>Meus Trabalhos</h2>
+                <p>Veja meus trabalhos em destaque</p>
+            </div>
+
+            <div class="row sgrid">
+                <?php foreach ($datas as $data): ?>
+                    <div class="col-12 col-md-6 mb-3 cardfor">
+                        <div class="card mb-3" style="max-width: 540px; background-color: #363636; padding: 10px; border-radius: 8px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                     <img src="<?php echo $data['image']; ?>" style="border-radius: 8px;" class="img-fluid rounded-start" alt="<?php echo $data['title']; ?>">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                        <h4 class="card-title" style="margin-botton:15px;"><strong><?php echo $data['title']; ?></strong></h4>
+                                        <p class="card-text"><?php echo $data['desc']; ?></p>
+                                       <a style="position: absolute; bottom: 0; right: 0; padding: 0.5rem;" href="<?php echo $data['url']; ?>">clique aqui para ver o site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </section>
         <!-- Fim Section -->
