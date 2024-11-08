@@ -12,9 +12,7 @@
     <title>Portfólio</title>
     <style>
         .container-xxl {
-            border: 2px solid red;
             min-height: 100vh;
-            box-sizing: border-box;
             font-family: 'Courier New', Courier, monospace;
             background-color: #1C1C1C;
             color: white;
@@ -22,18 +20,14 @@
 
         .principal-content {
             display: flex;
-            height: 682px;
             justify-content: center;
             align-items: center;
             position: relative;
+            height: 100vh;
             background-image: url('assets/foto-header.png');
-
             background-size: cover;
-            /* Ajusta a imagem para caber dentro do container sem distorcer */
             background-position: center;
             overflow: hidden;
-            z-index: 1;
-            /* Certifica-se de que o conteúdo está abaixo */
         }
 
         .overlay {
@@ -43,96 +37,37 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            /* Ajuste a cor e a opacidade do overlay */
-            z-index: 0;
-            /* Coloca o overlay atrás do conteúdo */
         }
-
 
         .secundary-content {
-            width: 1040px;
-            height: 434px;
+            max-width: 90%;
+            text-align: center;
             z-index: 2;
-        }
-
-        .third-content {
-            width: 680px;
-            height: 327px;
-        }
-
-        .image {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-
         }
 
         .image img {
             width: 120px;
             height: 120px;
-            border-radius: 50px;
-        }
-
-        .desc {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            height: 159px;
+            border-radius: 50%;
         }
 
         .icons {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 20px;
             font-size: 25px;
-        }
-
-        .header,
-        .section,
-        .footer {
-          
-            padding: 20px;
-        }
-
-        .section {
-            height: 921px;
-        }
-
-        .th2 {
-          
-            width: 1040px;
-            text-align: center;
-        }
-
-        .sgrid {
-            display: flex;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            width: 1040px;
-            
-        
-        }
-        .card-body{
-           
-            height: auto;
-        }
-        .card-title{
-            text-align: center;
-
-        }
-      
-        .card-text{
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-top: 15px;
         }
 
-        .footer {
-            height: 787px;
+        .section .sgrid .card {
+            background-color: #363636;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .footer .card {
+            background-color: #363636;
+            color: white;
         }
     </style>
 </head>
@@ -140,25 +75,16 @@
 <body>
     <div class="container-xxl">
         <!-- Header -->
-        <header class="container principal-content">
-
-            <div class="overlay"></div> <!-- Filtro opaco adicionado -->
+        <header class="container-fluid principal-content">
+            <div class="overlay"></div>
             <div class="secundary-content">
-                <div class="container third-content">
-                    <div class="image">
-                        <img src="assets/goku.png" alt="goku-foto">
-                    </div>
-                    <div class="desc">
-                        <div>
-                            <p>Oi , eu sou goku , sou um </p>
-                            <h1>Desenvolvedor PHP</h1>
-                        </div>
-                        <div>
-                            <p>Transformo necessidades em aplicações reais, evolventes e funcionais.
-                                Desenvolvo sistemas através da minha paixão pela tecnologia, contribuindo com soluções
-                                inovadoras e eficazes para desafios complexos.</p>
-                        </div>
-                    </div>
+                <div class="image mb-4">
+                    <img src="assets/goku.png" alt="goku-foto">
+                </div>
+                <div class="desc mb-4">
+                    <p>Oi, eu sou Goku, sou um</p>
+                    <h1>Desenvolvedor PHP</h1>
+                    <p>Transformo necessidades em aplicações reais, evolventes e funcionais. Desenvolvo sistemas através da minha paixão pela tecnologia, contribuindo com soluções inovadoras e eficazes para desafios complexos.</p>
                 </div>
                 <div class="icons">
                     <i class="fab fa-html5 fa-2x" title="HTML5"></i>
@@ -172,6 +98,7 @@
         <!-- Fim Header -->
 
         <!-- Section -->
+
         <?php
 
         $datas = [
@@ -201,26 +128,24 @@
             ]
         ]
         ?>
-        <section class="container section">
-            <div class="container th2">
+        <section class="container section mt-5">
+            <div class="text-center mb-4">
                 <h2>Meus Trabalhos</h2>
                 <p>Veja meus trabalhos em destaque</p>
             </div>
 
-            <div class="row sgrid">
+            <div class="row g-3 sgrid">
                 <?php foreach ($datas as $data): ?>
-                    <div class="col-12 col-md-6 mb-3 cardfor">
-                        <div class="card mb-3" style="max-width: 540px; background-color: #363636; padding: 10px; border-radius: 8px;">
+                    <div class="col-12 col-md-6">
+                        <div class="card h-100" style="padding: 10px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                     <img src="<?php echo $data['image']; ?>" style="border-radius: 8px;" class="img-fluid rounded-start" alt="<?php echo $data['title']; ?>">
+                                    <img src="<?php echo $data['image']; ?>" class="img-fluid rounded-start" alt="<?php echo $data['title']; ?>">
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                                        <h4 class="card-title" style="margin-botton:15px;"><strong><?php echo $data['title']; ?></strong></h4>
-                                        <p class="card-text"><?php echo $data['desc']; ?></p>
-                                       <a style="position: absolute; bottom: 0; right: 0; padding: 0.5rem;" href="<?php echo $data['url']; ?>">clique aqui para ver o site</a>
-                                    </div>
+                                <div class="col-md-8 d-flex flex-column justify-content-center align-items-center" style="padding: 10px;">
+                                    <h4 class="card-title mt-3"><strong><?php echo $data['title']; ?></strong></h4>
+                                    <p style="text-align: center;" class="card-text"><?php echo $data['desc']; ?></p>
+                                    <a class="btn btn-link mt-auto" href="<?php echo $data['url']; ?>">Ver site</a>
                                 </div>
                             </div>
                         </div>
@@ -231,8 +156,32 @@
         <!-- Fim Section -->
 
         <!-- Footer -->
-        <footer class="container footer">
-            <p class="text-center m-0">Rodapé</p>
+        <!-- Footer -->
+        <footer class="container footer" style="height: 700px;">
+            <div class="container" style="text-align: center; margin-top: 60px;">
+                <p style="color: purple;">Contato</p>
+                <h5 style="font-size: 25px;">Gostou do meu trabalho?</h5>
+                <p>Entre em contato pelas minhas redes sociais</p>
+            </div>
+            <div class="container" style="width: 370px; gap: 20px; margin-right:auto; margin-left:auto; margin-top: 60px;">
+                <a style="text-decoration: none;" href="https://www.linkedin.com/in/owesleymauricio/">
+                    <div class="card" style="display:flex; margin-top: 20px; font-size: 25px; align-items:center; justify-content:center; flex-direction:row; background-color: #363636;">
+                        <div class="card-body">
+                            LinkedIn
+                        </div>
+                        <i style="margin-right: 10px; color:blue;" class="fab fa-linkedin fa-2x" title="LinkedIn"></i>
+                    </div>
+                </a>
+
+                <a style="text-decoration: none;" href="https://github.com/owesleymauricio">
+                    <div class="card" style="display:flex; margin-top: 20px; font-size: 25px; align-items:center; justify-content:center; flex-direction:row; background-color: #363636;">
+                        <div class="card-body">
+                            GitHub
+                        </div>
+                        <i style="margin-right: 10px; color:#1C1C1C;" class="fab fa-github fa-2x" title="GitHub"></i>
+                    </div>
+                </a>
+            </div>
         </footer>
         <!-- Fim Footer -->
     </div>
